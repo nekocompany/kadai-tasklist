@@ -8,6 +8,8 @@
 <%= link_to task.id, task %>
  : 
 <%= task.content %>
+&gt;&gt;
+<%= task.status %> 
 <%= link_to '消去', task, method: :delete, data: { confirm: 'タスクを消してよろしいですか？' } %>
 </li>
   
