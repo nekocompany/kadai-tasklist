@@ -1,21 +1,35 @@
 <h1>タスク一覧</h1>
 
-<ul>
-  
-<% @tasks.each do |task| %>
 
-    <li>
-<%= link_to task.id, task %>
- : 
-<%= task.content %>
-&gt;&gt;
-<%= task.status %> 
-<%= link_to '消去', task, method: :delete, data: { confirm: 'タスクを消してよろしいですか？' } %>
-</li>
-  
-<% end %>
+<div class="row">
+  <div class="col-xs-6">
 
-</ul>
+    <% if @tasks.any? %>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr class="info">
+            <th>id</th>
+            <th>タスク</th>
+            <th>ステータス</th>
+            <th>消去ボタン</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tasks.each do |task| %>
+            <tr>
+              <td><%= link_to task.id, task %></td>
+              <td><%= task.content %></td>
+              <td><%= task.status %></td>
+              <td><%= link_to '消去', task, method: :delete, data: { confirm: 'タスクを消してよろしいですか?' }, class: 'btn btn-default' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div>
+       <%= paginate @tasks %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-
-<%= link_to '新規タスクの投稿', new_task_path %>
+<%= link_to '新規タスクの投稿', new_task_path, class: "btn btn-primary" %>
