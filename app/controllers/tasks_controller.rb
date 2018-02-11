@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # def correct_user
   # @micropost = current_user.microposts.find_by(id: params[:id])
   
-  
+  before_action :require_user_logged_in, only: [:show, :edit, :update, :destroy, :new]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
