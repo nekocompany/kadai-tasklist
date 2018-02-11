@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   root to: 'toppages#index'
   
+  get 'tasks/', to: 'toppages#index'
   resources :tasks
+  
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

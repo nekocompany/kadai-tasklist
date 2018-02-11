@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  #before_action :set_task, only: [:show, :edit, :update, :destroy]
   
   # Micropostの場合
   # before_action :correct_user, only: [:destroy] 
@@ -8,10 +8,10 @@ class TasksController < ApplicationController
   # @micropost = current_user.microposts.find_by(id: params[:id])
   
   
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tasks = Task.all.page(params[:page])
+    # @tasks = Task.all.page(params[:page])
   end
 
   def show
@@ -66,9 +66,9 @@ class TasksController < ApplicationController
   
   private
 
-  def set_task
-    @task = Task.find(params[:id])
-  end
+  # def set_task
+  #   @task = Task.find(params[:id])
+  # end
 
   # Strong Parameter
   def task_params
